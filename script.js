@@ -13,9 +13,8 @@ $("#submitCity").on("click",function(event){
     $("#firstSearch").text( JSON.parse(usersInput));
 
     
-    
     // pulling data from weather api, only after click is initiated
-    // need var usersInput thus it is in this loop
+    // need var usersInput thus it is in on click function
     // &units=imperial makes F standard over C or K 
     var apiKey = "daf08b427b26f11b51a8b3849391acfc";
     var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + JSON.parse(usersInput) + "&appid=" + apiKey + "&units=imperial";
@@ -24,15 +23,25 @@ $("#submitCity").on("click",function(event){
     $.ajax({
         url : queryUrl,
         method: "GET"
+
+    // after calling, this is the response
     }).then(function(response) {
         console.log(response);
-
-        // var mainIcon = $("#mainIcon").text(response.weather[0].icon);
-        // console.log(mainIcon);
+        
+        // retreive iconId, insert id into link, add link to img tag, add image tag to mainDisplay
+        var mainIconId = response.weather[0].icon;
+        var iconUrl = "http://openweathermap.org/img/wn/"+ mainIconId +"@2x.png"
+        var iconImageTag = $("<img>").attr("src", iconUrl);
+        // displays main icon
+        var mainIconDisplay = $("#mainIcon").append(iconImageTag);
+    
+        // displays main temperature 
         var mainTempData = $("#mainTemp").text("Temperature: " + JSON.parse(response.main.temp));
         console.log(mainTempData);
+        // displays main humidity
         var mainHumidityData = $("#mainHumidity").text("Humidity: " + JSON.parse(response.main.humidity));
         console.log(mainHumidityData)
+        // displays main WindSpeed 
         var mainWindSpeedData = $("#mainWindSpeed").text("Wind Speed: " + JSON.parse(response.wind.speed));
         console.log(mainWindSpeedData);
        
@@ -51,71 +60,12 @@ $("#submitCity").on("click",function(event){
 //     iconId: response.weather[0].icon
 // }
 
-// var todaysTemp = $("#mainTemp");
-// var seach = "San Diego"
 
-// var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey;
-
-// $.ajax({
-//     url : queryUrl,
-//     method: "GET"
-// }).then(function(response) {
-//     console.log(response);
-
-// });
-
-// function displayWeatherInfo() {
-//     var weatherData = $(this).attr("data-name");
-//     var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + weatherData + "&appid=daf08b427b26f11b51a8b3849391acfc";
-
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//     }).then(function(result) {
-//         console.log(result);
-    
-//     });
-
-// }
+// could make 2 functions 
+// one to display main weather info
+// one to display five day weather info
 
 
-
-
-// function displayWeatherInfo() {
-//     var weatherData = $(this).attr("data-name");
-//     var queryURL = "api.openweathermap.org/data/2.5/weather?q="+ weatherData + "&appid=daf08b427b26f11b51a8b3849391acfc"}
-
-//     ajax({
-//         url: queryURL,
-//         method: "GET"
-//     }).then(function(response) {
-        // $("")
-//     });
-// }
-
-
-
-
-
-
-
-
-
-// function displayWeather() {
-//     var temperature = $(this).attr("data-name");
-//     var weatherQueryUrl = "api.openweathermap.org/data/2.5/weather?q="+ usersInput + "&appid=daf08b427b26f11b51a8b3849391acfc"
-//     console.log(weatherQueryUrl);
-    
-//     $.ajax({
-//         url: weatherQueryUrl,
-//         method: "GET"
-//     }).then(function(result){ 
-//         console.log(result);
-//     });
-//     console.log(result);
-// }
-
-//place holder area must be array of sorts 
 // possible function to cycle through searches. 
 // probably needs some looping 
 // $("#firstSearch").on("click", function (event) {
