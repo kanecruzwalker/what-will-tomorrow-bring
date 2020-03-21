@@ -15,8 +15,9 @@ $("#submitCity").on("click",function(event){
     
     // pulling data from weather api, only after click is initiated
     // need var usersInput thus it is in this loop
+    // &units=imperial makes F standard over C or K 
     var apiKey = "daf08b427b26f11b51a8b3849391acfc";
-    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey;
+    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey + "&units=imperial";
 
     $.ajax({
         url : queryUrl,
