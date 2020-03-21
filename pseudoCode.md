@@ -8,6 +8,14 @@ connect index.html to
 
 
 open weather api can make use of 
+    contemplate units format to retreive the desired temp value
+
+    parameters needed,
+    name, main.temp or main.feels_like, weather.icon, main.humidity, wind.speed, 
+
+
+
+
     current weather for any geolocation
         by city name, city id, geographic coordinates, or zip code 
 
