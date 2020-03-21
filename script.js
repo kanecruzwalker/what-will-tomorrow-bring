@@ -24,18 +24,33 @@ $("#submitCity").on("click",function(event){
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        console.log(response.base);
-        console.log(response.base.main);
-        console.log(response.main);
-        console.log(response.main.temp);
-        var mainTemperature = $("#mainTemp").text("Temperature: " + response.main.temp);
 
+        // var mainIcon = $("#mainIcon").text(response.weather[0].icon);
+        // console.log(mainIcon);
+        var mainTempData = $("#mainTemp").text("Temperature: " + JSON.parse(response.main.temp));
+        console.log(mainTempData);
+        var mainHumidityData = $("#mainHumidity").text("Humidity: " + JSON.parse(response.main.humidity));
+        console.log(mainHumidityData)
+        var mainWindSpeedData = $("#mainWindSpeed").text("Wind Speed: " + JSON.parse(response.wind.speed));
+        console.log(mainWindSpeedData);
+        
+        
+        
+        
     });
-        // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
-
+    // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
+    
 });
 
-
+//what an object of weatherData variables would look like 
+// var weatherData = {
+//     cityName: response.name,
+//     date2: response.dt,
+//     temperature: response.temp_like,
+//     humidity: response.main.humidity,
+//     windSpeed: response.wind.speed,
+//     iconId: response.weather[0].icon
+// }
 
 // var todaysTemp = $("#mainTemp");
 // var seach = "San Diego"
