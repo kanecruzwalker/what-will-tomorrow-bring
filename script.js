@@ -10,7 +10,60 @@ $("#submitCity").on("click",function(event){
     $("#mainDisplay").text( JSON.parse(usersInput) + " " + JSON.parse(date));
 
     $("#firstSearch").text( JSON.parse(usersInput));
+
+    
+    
+    // pulling data from weather api, only after click is initiated
+    // need var usersInput thus it is in this loop
+    var apiKey = "daf08b427b26f11b51a8b3849391acfc";
+    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey;
+
+    $.ajax({
+        url : queryUrl,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+        console.log(response.base);
+        console.log(response.base.main);
+        console.log(response.main);
+        console.log(response.main.temp);
+
+        // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
+
 });
+
+});
+
+
+// var todaysTemp = $("#mainTemp");
+// var seach = "San Diego"
+
+// var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey;
+
+// $.ajax({
+//     url : queryUrl,
+//     method: "GET"
+// }).then(function(response) {
+//     console.log(response);
+
+// });
+
+// function displayWeatherInfo() {
+//     var weatherData = $(this).attr("data-name");
+//     var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + weatherData + "&appid=daf08b427b26f11b51a8b3849391acfc";
+
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function(result) {
+//         console.log(result);
+    
+//     });
+
+// }
+
+
+
 
 // function displayWeatherInfo() {
 //     var weatherData = $(this).attr("data-name");
@@ -20,7 +73,7 @@ $("#submitCity").on("click",function(event){
 //         url: queryURL,
 //         method: "GET"
 //     }).then(function(response) {
-    
+        // $("")
 //     });
 // }
 
