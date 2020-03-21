@@ -2,13 +2,14 @@
 var date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
-//takes users input
+// first on click event 
 $("#submitCity").on("click",function(event){
-    var usersInput = JSON.stringify($("#usersInput").val().trim());
     event.preventDefault();
+    var usersInput = JSON.stringify($("#usersInput").val().trim());
     console.log(usersInput)
+    // assigning usersInput and date to main display 
     $("#mainDisplay").text( JSON.parse(usersInput) + " " + JSON.parse(date));
-
+    // assigning usersInput to search history area
     $("#firstSearch").text( JSON.parse(usersInput));
 
     
@@ -17,8 +18,9 @@ $("#submitCity").on("click",function(event){
     // need var usersInput thus it is in this loop
     // &units=imperial makes F standard over C or K 
     var apiKey = "daf08b427b26f11b51a8b3849391acfc";
-    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey + "&units=imperial";
+    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + JSON.parse(usersInput) + "&appid=" + apiKey + "&units=imperial";
 
+    // ajax calling from one day weather info
     $.ajax({
         url : queryUrl,
         method: "GET"
@@ -33,16 +35,13 @@ $("#submitCity").on("click",function(event){
         console.log(mainHumidityData)
         var mainWindSpeedData = $("#mainWindSpeed").text("Wind Speed: " + JSON.parse(response.wind.speed));
         console.log(mainWindSpeedData);
-        
-        
-        
-        
+       
     });
-    // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
     
 });
 
 //what an object of weatherData variables would look like 
+// var mainTemperature = $("#mainTemp").text(response.base.main.temp);
 // var weatherData = {
 //     cityName: response.name,
 //     date2: response.dt,
