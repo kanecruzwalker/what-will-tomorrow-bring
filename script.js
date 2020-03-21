@@ -27,12 +27,13 @@ $("#submitCity").on("click",function(event){
         console.log(response.base.main);
         console.log(response.main);
         console.log(response.main.temp);
+        var mainTemperature = $("#mainTemp").text("Temperature: " + response.main.temp);
 
+    });
         // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
 
 });
 
-});
 
 
 // var todaysTemp = $("#mainTemp");
