@@ -2,6 +2,7 @@
 var date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
+
 // first on click event 
 $("#submitCity").on("click",function(event){
     event.preventDefault();
@@ -45,6 +46,26 @@ $("#submitCity").on("click",function(event){
         var mainWindSpeedData = $("#mainWindSpeed").text("Wind Speed: " + JSON.parse(response.wind.speed));
         console.log(mainWindSpeedData);
        
+    });
+
+    // starting calls for five day forecast 
+    var fiveDayUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + JSON.parse(usersInput) + "&appid=" + apiKey + "&units=imperial";
+
+    $.ajax({
+        url : fiveDayUrl,
+        method: "GET"
+
+    // after calling, this is the response
+    }).then(function(result) {
+        console.log(result);
+        console.log(result.list);
+
+        // need a list index number that cycles through pending on the current hour/ day
+        console.log(result.list[0].main)
+        console.log(result.list[0].main.temp)
+        console.log(result.list[0].main.humidity)
+        console.log(result.list[0].weather[0].icon);
+
     });
     
 });
