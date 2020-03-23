@@ -3,11 +3,12 @@ var date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
 
-// first on click event 
+// on click event function       
 $("#submitCity").on("click",function(event){
     event.preventDefault();
     var usersInput = JSON.stringify($("#usersInput").val().trim());
     console.log(usersInput)
+
     // assigning usersInput and date to main display 
     $("#mainDisplay").text( JSON.parse(usersInput) + " " + JSON.parse(date));
     // assigning usersInput to search history area
@@ -20,6 +21,8 @@ $("#submitCity").on("click",function(event){
     var apiKey = "daf08b427b26f11b51a8b3849391acfc";
     var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + JSON.parse(usersInput) + "&appid=" + apiKey + "&units=imperial";
 
+    
+    
     // ajax calling from one day weather info
     $.ajax({
         url : queryUrl,
@@ -29,7 +32,8 @@ $("#submitCity").on("click",function(event){
     }).then(function(response) {
         console.log(response);
         
-        // retreive iconId, insert id into link, add link to img tag, add image tag to mainDisplay
+        // retreive iconId, insert id into link, add link to img tag, add image tag to mainDispla
+
         var mainIconId = response.weather[0].icon;
         var iconUrl = "http://openweathermap.org/img/wn/"+ mainIconId +"@2x.png"
         var iconImageTag = $("<img>").attr("src", iconUrl);
@@ -55,7 +59,7 @@ $("#submitCity").on("click",function(event){
         url : fiveDayUrl,
         method: "GET"
 
-    // after calling, this is the response
+        // after calling, this is the response
     }).then(function(result) {
         console.log(result);
         console.log(result.list);
@@ -67,7 +71,52 @@ $("#submitCity").on("click",function(event){
         console.log(result.list[0].weather[0].icon);
 
     });
+
+
+
+
+
+    // creating buttons from previous searches 
+    var searchHistory = [
+        usersInput,
+    ]
+
+
+    function renderSearches() {
     
+        $("#firstSearch").empty();
+
+        for (var i = 0; i < searchHistory.length; i++) {
+
+            var searchButton = $("<button>");
+            
+            searchButton.addClass("citySearch");
+
+            searchButton.attr("data-name", searchHistory[i]);
+
+            searchButton.text(searchHistory[i]);
+
+            $("#firstSearch").append(searchHistory[i]);
+            console.log()
+        }
+        
+    }
+    renderSearches()
+    
+    
+
+    // array of searches 
+
+
+
+
+    // $("submitCity").on("click", function(event){
+    //     event.preventDefault()
+        
+    //     searches.push(usersInput);
+    //     renderSearches();
+    //     console.log(searches);
+    // });
 });
 
 //what an object of weatherData variables would look like 
