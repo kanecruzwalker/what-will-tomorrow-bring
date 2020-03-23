@@ -14,15 +14,16 @@ function renderSearches() {
 
         var searchButton = $("<button>");
         
-        searchButton.addClass("citySearch");
+        searchButton.addClass("citySearchValue");
 
         searchButton.attr("data-name", searchHistory[i]);
 
         searchButton.text(searchHistory[i]);
 
-        $("#firstSearch").append(searchHistory);
+        $("#searchContainer").prepend(searchHistory);
     }
 }
+
 
 
 // on click event function       
@@ -32,6 +33,7 @@ $("#submitCity").on("click",function(event){
     searchHistory.push(usersInput);
     renderSearches();
     console.log(usersInput)
+    console.log(searchHistory);
 
 
     // assigning usersInput and date to main display 
@@ -106,7 +108,7 @@ $("#submitCity").on("click",function(event){
         console.log(result.list[0].weather[0].icon);
 
     });
-    renderSearches();
+
 
 
 
