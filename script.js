@@ -31,6 +31,8 @@ $("#submitCity").on("click",function(event){
     // after calling, this is the response
     }).then(function(response) {
         console.log(response);
+
+        $("#mainIcon").empty();
         
         // retreive iconId, insert id into link, add link to img tag, add image tag to mainDispla
 
