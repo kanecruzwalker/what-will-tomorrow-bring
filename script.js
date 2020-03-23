@@ -2,12 +2,37 @@
 var date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
+var searchHistory = [
+        
+]
+
+function renderSearches() {
+    
+    $("searchContainer").empty();
+
+    for (var i = 0; i < searchHistory.length; i++) {
+
+        var searchButton = $("<button>");
+        
+        searchButton.addClass("citySearch");
+
+        searchButton.attr("data-name", searchHistory[i]);
+
+        searchButton.text(searchHistory[i]);
+
+        $("#firstSearch").append(searchHistory);
+    }
+}
+
 
 // on click event function       
 $("#submitCity").on("click",function(event){
     event.preventDefault();
     var usersInput = JSON.stringify($("#usersInput").val().trim());
+    searchHistory.push(usersInput);
+    renderSearches();
     console.log(usersInput)
+
 
     // assigning usersInput and date to main display 
     $("#mainDisplay").text( JSON.parse(usersInput) + " " + JSON.parse(date));
@@ -63,6 +88,14 @@ $("#submitCity").on("click",function(event){
 
         // after calling, this is the response
     }).then(function(result) {
+
+
+
+
+
+
+
+
         console.log(result);
         console.log(result.list);
 
@@ -73,37 +106,19 @@ $("#submitCity").on("click",function(event){
         console.log(result.list[0].weather[0].icon);
 
     });
-
+    renderSearches();
 
 
 
 
     // creating buttons from previous searches 
-    var searchHistory = [
-        usersInput,
-    ]
 
 
-    function renderSearches() {
-    
-        $("#firstSearch").empty();
+    //searchContainer for saved searches 
 
-        for (var i = 0; i < searchHistory.length; i++) {
 
-            var searchButton = $("<button>");
-            
-            searchButton.addClass("citySearch");
 
-            searchButton.attr("data-name", searchHistory[i]);
 
-            searchButton.text(searchHistory[i]);
-
-            $("#firstSearch").append(searchHistory[i]);
-            console.log()
-        }
-        
-    }
-    renderSearches()
     
     
 
