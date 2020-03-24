@@ -109,6 +109,10 @@ $("#submitCity").on("click",function(event){
 
         $("#emoji1").empty();
         $("#emoji2").empty();
+        $("#emoji3").empty();
+        $("#emoji4").empty();
+        $("#emoji5").empty();
+
 
         console.log(result);
 
@@ -134,13 +138,28 @@ $("#submitCity").on("click",function(event){
         var day1IconDisplay = $("#emoji1").append(day1IconImageTag);
        
         // day 2 emoji
-        var day2Icon = result.list[0].weather[0].icon;
+        var day2Icon = result.list[6].weather[0].icon;
         var day2IconUrl = "http://openweathermap.org/img/wn/"+ day2Icon +"@2x.png"
         var day2IconImageTag = $("<img>").attr("src", day2IconUrl);
         var day2IconDisplay = $("#emoji2").append(day2IconImageTag);
+
+        // day 3 emoji
+        var day3Icon = result.list[14].weather[0].icon;
+        var day3IconUrl = "http://openweathermap.org/img/wn/"+ day3Icon +"@2x.png"
+        var day3IconImageTag = $("<img>").attr("src", day3IconUrl);
+        var day3IconDisplay = $("#emoji3").append(day3IconImageTag);
        
+        // day 4 emoji
+        var day4Icon = result.list[22].weather[0].icon;
+        var day4IconUrl = "http://openweathermap.org/img/wn/"+ day4Icon +"@2x.png"
+        var day4IconImageTag = $("<img>").attr("src", day4IconUrl);
+        var day4IconDisplay = $("#emoji4").append(day4IconImageTag);
        
-       
+        // day 5 emoji
+        var day5Icon = result.list[30].weather[0].icon;
+        var day5IconUrl = "http://openweathermap.org/img/wn/"+ day5Icon +"@2x.png"
+        var day5IconImageTag = $("<img>").attr("src", day5IconUrl);
+        var day5IconDisplay = $("#emoji5").append(day5IconImageTag);
        
         // need a list index number that cycles through pending on the current hour/ day
         console.log(result.list[0].main)
