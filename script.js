@@ -3,9 +3,6 @@ var date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
 
-
-
-
 // on click event function       
 $("#submitCity").on("click",function(event){
     event.preventDefault();
@@ -166,6 +163,11 @@ $("#submitCity").on("click",function(event){
         console.log(result.list[0].main.temp)
         console.log(result.list[0].main.humidity)
         console.log(result.list[0].weather[0].icon);
+        console.log(result.list[0].dt_txt);
+
+
+
+
     });
 
 
