@@ -107,6 +107,9 @@ $("#submitCity").on("click",function(event){
         // after calling, this is the response
     }).then(function(result) {
 
+        var temp1Data = $("#temp1").text("Temperature: " + JSON.parse(result.list[0].main.temp));
+        var humidity1Data = $("#humidity1").text("Humidity " + JSON.parse(result.list[0].main.humidity))
+
         console.log(result);
         console.log(result.list);
 
