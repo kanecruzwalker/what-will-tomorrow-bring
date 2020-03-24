@@ -107,6 +107,8 @@ $("#submitCity").on("click",function(event){
         // after calling, this is the response
     }).then(function(result) {
 
+        $("#emoji1").empty();
+
         console.log(result);
 
         var temp1Data = $("#temp1").text("Temperature: " + JSON.parse(result.list[0].main.temp));
@@ -123,6 +125,18 @@ $("#submitCity").on("click",function(event){
         
         var temp5Data = $("#temp5").text("Temperature: " + JSON.parse(result.list[30].main.temp));
         var humidity5Data = $("#humidity5").text("Humidity: " + JSON.parse(result.list[30].main.humidity));
+       
+        // day 1 emoji
+        var day1Icon = result.list[0].weather[0].icon;
+        var day1IconUrl = "http://openweathermap.org/img/wn/"+ day1Icon +"@2x.png"
+        var day1IconImageTag = $("<img>").attr("src", day1IconUrl);
+        var day1IconDisplay = $("#emoji1").append(day1IconImageTag);
+       
+       
+       
+       
+       
+       
         // need a list index number that cycles through pending on the current hour/ day
         console.log(result.list[0].main)
         console.log(result.list[0].main.temp)
