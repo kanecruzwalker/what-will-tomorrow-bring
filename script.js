@@ -2,27 +2,7 @@
 var date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
-var searchHistory = [
-        
-]
 
-function renderSearches() {
-    
-    $("searchContainer").empty();
-
-    for (var i = 0; i < searchHistory.length; i++) {
-
-        var searchButton = $("<button>");
-        
-        searchButton.addClass("citySearchValue");
-
-        searchButton.attr("data-name", searchHistory[i]);
-
-        searchButton.text(searchHistory[i]);
-
-        $("#searchContainer").prepend(searchHistory);
-    }
-}
 
 
 
@@ -30,16 +10,52 @@ function renderSearches() {
 $("#submitCity").on("click",function(event){
     event.preventDefault();
     var usersInput = JSON.stringify($("#usersInput").val().trim());
-    searchHistory.push(usersInput);
-    renderSearches();
     console.log(usersInput)
-    console.log(searchHistory);
-
 
     // assigning usersInput and date to main display 
     $("#mainDisplay").text( JSON.parse(usersInput) + " " + JSON.parse(date));
     // assigning usersInput to search history area
     $("#firstSearch").text( JSON.parse(usersInput));
+
+
+        // creating buttons with each search
+
+        var searchHistory = JSON.parse(localStorage.getItem("#searchContainer"));
+        if (searchHistory === null) {
+            searchHistory = []
+    }
+    renderSearches();
+    function renderSearches() {
+    $("#searchContainer").empty();
+    for (var i = 0; i < searchHistory.length; i++) {
+        var button = $("<button type='button' class='btn btn-primary'>").text(searchHistory[i]);
+
+        $("#searchContainer").append(button);
+    }
+    }
+    $("form").on("#submitCity", function(event) {
+    event.preventDefault();
+    var search = $("#usersInput").val().trim();
+    searchHistory.unshift(search);
+    while (searchHistory.length > 10) {
+        searchHistory.pop();
+    }
+    localStorage.setItem("#searchContainer", JSON.stringify(searchHistory));
+    renderSearches();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
     // pulling data from weather api, only after click is initiated
@@ -91,13 +107,6 @@ $("#submitCity").on("click",function(event){
         // after calling, this is the response
     }).then(function(result) {
 
-
-
-
-
-
-
-
         console.log(result);
         console.log(result.list);
 
@@ -106,13 +115,19 @@ $("#submitCity").on("click",function(event){
         console.log(result.list[0].main.temp)
         console.log(result.list[0].main.humidity)
         console.log(result.list[0].weather[0].icon);
-
     });
 
 
 
 
 
+
+
+
+
+
+
+});
     // creating buttons from previous searches 
 
 
@@ -136,7 +151,6 @@ $("#submitCity").on("click",function(event){
     //     renderSearches();
     //     console.log(searches);
     // });
-});
 
 //what an object of weatherData variables would look like 
 // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
