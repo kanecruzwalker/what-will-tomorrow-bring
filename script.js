@@ -108,6 +108,7 @@ $("#submitCity").on("click",function(event){
     }).then(function(result) {
 
         $("#emoji1").empty();
+        $("#emoji2").empty();
 
         console.log(result);
 
@@ -132,7 +133,11 @@ $("#submitCity").on("click",function(event){
         var day1IconImageTag = $("<img>").attr("src", day1IconUrl);
         var day1IconDisplay = $("#emoji1").append(day1IconImageTag);
        
-       
+        // day 2 emoji
+        var day2Icon = result.list[0].weather[0].icon;
+        var day2IconUrl = "http://openweathermap.org/img/wn/"+ day2Icon +"@2x.png"
+        var day2IconImageTag = $("<img>").attr("src", day2IconUrl);
+        var day2IconDisplay = $("#emoji2").append(day2IconImageTag);
        
        
        
