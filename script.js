@@ -107,11 +107,13 @@ $("#submitCity").on("click",function(event){
         // after calling, this is the response
     }).then(function(result) {
 
+        console.log(result);
+
         var temp1Data = $("#temp1").text("Temperature: " + JSON.parse(result.list[0].main.temp));
         var humidity1Data = $("#humidity1").text("Humidity " + JSON.parse(result.list[0].main.humidity))
 
-        console.log(result);
-        console.log(result.list);
+       var temp2Data = $("#temp2").text("Temperature: " + JSON.parse(result.list[6].main.temp));
+       var humidity2Data = $("#humidity2").text("Humidity " + JSON.parse(result.list[6].main.humidity));
 
         // need a list index number that cycles through pending on the current hour/ day
         console.log(result.list[0].main)
