@@ -7,19 +7,14 @@ connect index.html to
     moment
 
 
-open weather api can make use of 
-    contemplate units format to retreive the desired temp value
-
+open weather api 
     parameters needed,
     name, main.temp or main.feels_like, weather.icon, main.humidity, wind.speed, 
-
-
-
 
     current weather for any geolocation
         by city name, city id, geographic coordinates, or zip code 
 
-        available in JSON, XML, HTML
+    available in JSON, XML, HTML
 
     5day/3hour weather forecast 
         by city name, city id, geographic coordinates, or zip code

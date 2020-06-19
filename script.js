@@ -1,5 +1,5 @@
 //adding current date to document
-var date =JSON.stringify(moment().format("MM-DD-YYYY"));
+const date =JSON.stringify(moment().format("MM-DD-YYYY"));
 $("#dateHeader").text("Today's Forecast " + " " + date);
 
 
@@ -181,29 +181,7 @@ $("#submitCity").on("click",function(event){
 
 
 });
-    // creating buttons from previous searches 
 
-
-    //searchContainer for saved searches 
-
-
-
-
-    
-    
-
-    // array of searches 
-
-
-
-
-    // $("submitCity").on("click", function(event){
-    //     event.preventDefault()
-        
-    //     searches.push(usersInput);
-    //     renderSearches();
-    //     console.log(searches);
-    // });
 
 //what an object of weatherData variables would look like 
 // var mainTemperature = $("#mainTemp").text(response.base.main.temp);
