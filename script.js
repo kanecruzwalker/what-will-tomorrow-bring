@@ -14,9 +14,7 @@ $("#submitCity").on("click",function(event){
     // assigning usersInput to search history area
     $("#firstSearch").text( JSON.parse(usersInput));
 
-
         // creating buttons with each search
-
         var searchHistory = JSON.parse(localStorage.getItem("#searchContainer"));
         if (searchHistory === null) {
             searchHistory = []
@@ -45,43 +43,29 @@ $("#submitCity").on("click",function(event){
 
 
 
-
-
-
-
-
-
-
-
-
-    
     // pulling data from weather api, only after click is initiated
     // need var usersInput thus it is in on click function
-    // &units=imperial makes F standard over C or K 
     var apiKey = "daf08b427b26f11b51a8b3849391acfc";
     var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + JSON.parse(usersInput) + "&appid=" + apiKey + "&units=imperial";
 
     
-    
     // ajax calling from one day weather info
+    // with .then as the response
     $.ajax({
         url : queryUrl,
         method: "GET"
-
-    // after calling, this is the response
     }).then(function(response) {
         console.log(response);
 
         $("#mainIcon").empty();
         
         // retreive iconId, insert id into link, add link to img tag, add image tag to mainDispla
-
         var mainIconId = response.weather[0].icon;
         var iconUrl = "http://openweathermap.org/img/wn/"+ mainIconId +"@2x.png"
         var iconImageTag = $("<img>").attr("src", iconUrl);
+        
         // displays main icon
         var mainIconDisplay = $("#mainIcon").append(iconImageTag);
-    
         // displays main temperature 
         var mainTempData = $("#mainTemp").text("Temperature: " + JSON.parse(response.main.temp));
         console.log(mainTempData);
@@ -94,13 +78,12 @@ $("#submitCity").on("click",function(event){
        
     });
 
-    // starting calls for five day forecast 
+    // Five Day Forecast
     var fiveDayUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + JSON.parse(usersInput) + "&appid=" + apiKey + "&units=imperial";
 
     $.ajax({
         url : fiveDayUrl,
         method: "GET"
-
         // after calling, this is the response
     }).then(function(result) {
 
@@ -109,7 +92,6 @@ $("#submitCity").on("click",function(event){
         $("#emoji3").empty();
         $("#emoji4").empty();
         $("#emoji5").empty();
-
 
         console.log(result);
 
@@ -165,54 +147,5 @@ $("#submitCity").on("click",function(event){
         console.log(result.list[0].weather[0].icon);
         console.log(result.list[0].dt_txt);
 
-
-
-
     });
-
-
-
-
-
-
-
-
-
-
-
 });
-
-
-//what an object of weatherData variables would look like 
-// var mainTemperature = $("#mainTemp").text(response.base.main.temp);
-// var weatherData = {
-//     cityName: response.name,
-//     date2: response.dt,
-//     temperature: response.temp_like,
-//     humidity: response.main.humidity,
-//     windSpeed: response.wind.speed,
-//     iconId: response.weather[0].icon
-// }
-
-
-// could make 2 functions 
-// one to display main weather info
-// one to display five day weather info
-
-
-// possible function to cycle through searches. 
-// probably needs some looping 
-// $("#firstSearch").on("click", function (event) {
-    //     event.preventDefault();
-    //     //full assigned usersInput from it and re insert it to search
-    
-    // });
-    
-    // have a list of cities to pull and push from?
-    // based off user input values 
-    // var cities = [
-    // "",
-    // "",
-    // "",
-    // "",
-    // ]
