@@ -1,179 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4">What's the weather like?</h1>
-            </div>
-          </div>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">What's the weather like?</h1>
+        </div>
+      </div>
     </header>
 
     <main>
-        <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- holds seach bar and previous searches -->
+          <div class="col-3">
             <div class="row">
-                
-                <!-- holds seach bar and previous searches -->
-                <div class="col-3">
-                    
-                    <div class="row">
-                        <div class="col">
-
-                            <!-- search bar bootstrap -->
-                            <div class="input-group mb-3">
-                                <input id="usersInput" type="text" class="form-control" placeholder="City name" aria-label="Desired city input field" aria-describedby="submitCity">
-                                <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary" type="button" id="submitCity">Search</button>
-                                </div>
-                            </div>
-                        
-                        </div>
-                    </div>
-
-                    <!-- row for saved searches -->
-                    <div class="row">
-                        <div class="col">
-                            <div id="searchContainer"></div>
-                        </div>
-
-                    </div>
+              <div class="col">
+                <!-- search bar bootstrap -->
+                <div class="input-group mb-3">
+                  <input
+                    id="usersInput"
+                    type="text"
+                    class="form-control"
+                    placeholder="City name"
+                    aria-label="Desired city input field"
+                    aria-describedby="submitCity"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="submitCity"
+                    >
+                      Search
+                    </button>
+                  </div>
                 </div>
-            
-                <!-- holds main display and 5 day forecast -->
-                <div class="col-9">
-
-                    <!-- row for Main forecast display -->
-                    <div class="row">
-                        <div class="col">
-
-                            <div class="card">
-                                <div id="dateHeader" class="card-header">Today's Forecast</div>
-                                <div class="card-body">
-                                  <blockquote class="blockquote mb-0">
-                                    <h1 id="mainDisplay"> City Name , Date </h1>
-                                    <h2 id="mainIcon"></h2>
-                                    <h2 id="mainTemp"> Temperature: </h2>
-                                    <h2 id="mainHumidity"> Humidity: </h2>
-                                    <h2 id="mainWindSpeed"> Wind Speed: </h2>
-                                    <h2 id="uvIndex"> UV Index: </h2>
-                                  </blockquote>
-                                </div>
-                              </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="card-title">Five Day Forecast:</h5>
-                        </div>
-                    </div>
-
-                    <!-- row for  -->
-                    <div class="row">
-                        <div class="col">
-
-                            <div class="card">
-                                <div id="date1" class="card-header">
-                                  MM/DD/YYYY
-                                </div>
-                                <div class="card-body">
-                                  <h5 id="emoji1" class="card-title">Emoji Area</h5>
-                                  <p id="temp1" class="card-text">Temp Value</p>
-                                  <p id="humidity1" class="card-text">Humidity</p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="card">
-                                <div class="card-header">
-                                  MM/DD/YYYY
-                                </div>
-                                <div class="card-body">
-                                  <h5 id = "emoji2" class="card-title">Emoji Area</h5>
-                                  <p id = "temp2" class="card-text">Temp Value</p>
-                                  <p id = "humidity2" class="card-text">Humidity</p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="card">
-                                <div class="card-header">
-                                  MM/DD/YYYY
-                                </div>
-                                <div class="card-body">
-                                  <h5 id = "emoji3" class="card-title">Emoji Area</h5>
-                                  <p id = "temp3" class="card-text">Temp Value</p>
-                                  <p id = "humidity3" class="card-text">Humidity</p>
-                                </div>
-                            </div>
-
-                        </div>
-                            
-                        <div class="col">
-
-                            <div class="card">
-                                <div class="card-header">
-                                  MM/DD/YYYY
-                                </div>
-                                <div class="card-body">
-                                  <h5 id = "emoji4" class="card-title">Emoji Area</h5>
-                                  <p id = "temp4" class="card-text">Temp Value</p>
-                                  <p id = "humidity4" class="card-text">Humidity</p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="card">
-                                <div class="card-header">
-                                  MM/DD/YYYY
-                                </div>
-                                <div class="card-body">
-                                  <h5 id = "emoji5" class="card-title">Emoji Area</h5>
-                                  <p id = "temp5" class="card-text">Temp Value</p>
-                                  <p id = "humidity5" class="card-text">Humidity</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                
-                
-                
-                
-                </div>
-            
-
-
-
-
+              </div>
             </div>
-        </div>
-    </main>
-    
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+            <!-- row for saved searches -->
+            <div class="row">
+              <div class="col">
+                <div id="searchContainer"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- holds main display and 5 day forecast -->
+          <div class="col-9">
+            <!-- row for Main forecast display -->
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div id="dateHeader" class="card-header">
+                    Today's Forecast
+                  </div>
+                  <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                      <h1 id="mainDisplay">City Name , Date</h1>
+                      <h2 id="mainIcon"></h2>
+                      <h2 id="mainTemp">Temperature:</h2>
+                      <h2 id="mainHumidity">Humidity:</h2>
+                      <h2 id="mainWindSpeed">Wind Speed:</h2>
+                      <h2 id="uvIndex">UV Index:</h2>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title">Five Day Forecast:</h5>
+              </div>
+            </div>
+
+            <!-- row for  -->
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div id="date1" class="card-header">
+                    MM/DD/YYYY
+                  </div>
+                  <div class="card-body">
+                    <h5 id="emoji1" class="card-title">Emoji Area</h5>
+                    <p id="temp1" class="card-text">Temp Value</p>
+                    <p id="humidity1" class="card-text">Humidity</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    MM/DD/YYYY
+                  </div>
+                  <div class="card-body">
+                    <h5 id="emoji2" class="card-title">Emoji Area</h5>
+                    <p id="temp2" class="card-text">Temp Value</p>
+                    <p id="humidity2" class="card-text">Humidity</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    MM/DD/YYYY
+                  </div>
+                  <div class="card-body">
+                    <h5 id="emoji3" class="card-title">Emoji Area</h5>
+                    <p id="temp3" class="card-text">Temp Value</p>
+                    <p id="humidity3" class="card-text">Humidity</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    MM/DD/YYYY
+                  </div>
+                  <div class="card-body">
+                    <h5 id="emoji4" class="card-title">Emoji Area</h5>
+                    <p id="temp4" class="card-text">Temp Value</p>
+                    <p id="humidity4" class="card-text">Humidity</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    MM/DD/YYYY
+                  </div>
+                  <div class="card-body">
+                    <h5 id="emoji5" class="card-title">Emoji Area</h5>
+                    <p id="temp5" class="card-text">Temp Value</p>
+                    <p id="humidity5" class="card-text">Humidity</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
